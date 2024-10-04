@@ -73,16 +73,12 @@ def solve_sudoku(board):
             if board[row][col] == 0:
                 for num in range(1, 10):
                     if is_valid(board, row, col, num):
-                        print(f"Trying {num} at row {row}, col {col}")
 
                         board[row][col] = num
                         if solve_sudoku(board):
                             return True
                         board[row][col] = 0
-                        print(f"Backtracking from {num} at row {row}, col {col}")
-                raise UnsolvablePuzzleError(
-                    "No valid solution exists for this puzzle"
-                )
+                return False
     return True
 
 
